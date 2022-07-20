@@ -32,6 +32,6 @@ public class TrackcoinServiceImplementation implements TrackcoinService {
     @Transactional
     public List<UserTokenQuantity> getUserTokenQuantitiesByUser(User user, Integer page, Integer limit) {
         Pageable pageable = PageRequest.of(page, limit);
-        return userTokenQuantityRepository.findByUserOrderByQuantityDesc(user, pageable);
+        return userTokenQuantityRepository.findByUser(user, pageable);
     }
 }

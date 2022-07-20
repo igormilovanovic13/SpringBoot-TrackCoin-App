@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,9 @@ public class TrackcoinController {
         if(tokenQuantities == null || tokenQuantities.isEmpty()){
             return null;
         }
-        return tokenQuantities.stream().map(t -> new ApiUserTokenQuantity(t)).collect(Collectors.toList());
+        return tokenQuantities.stream().map(t -> new ApiUserTokenQuantity(t))
+                .sorted(Comparator.comparingDouble(ApiUserTokenQuantity::getValue).reversed())
+                .collect(Collectors.toList());
     }
 }
 

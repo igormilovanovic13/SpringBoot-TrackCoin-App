@@ -9,5 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface UserTokenQuantityRepository extends JpaRepository<UserTokenQuantity, Integer> {
-    List<UserTokenQuantity> findByUserOrderByQuantityDesc(User user, Pageable pageable);
+//    List<UserTokenQuantity> findByUserOrderByQuantityDesc(User user, Pageable pageable);
+    List<UserTokenQuantity> findByUser(User user, Pageable pageable);
 }
